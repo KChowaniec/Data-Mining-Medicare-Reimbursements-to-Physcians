@@ -1,0 +1,20 @@
+rm(list=ls())
+
+my.dataset<-read.csv("NameOfFile.csv")
+#View(my.dataset)
+
+my.dataset <- na.omit(my.dataset)
+View(my.dataset)
+
+x<- my.dataset$Total.Submitted.Charges
+y<- my.dataset$Total.Medical.Medicare.Allowed.Amount
+
+#column bind
+xy <- cbind(x,y)
+
+#distance b/w x and y
+dxy <- dist(xy)
+
+#Hierarchical Clustering
+hxy <- hclust(dxy, method = "average")
+plot(hxy)
